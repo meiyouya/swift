@@ -171,3 +171,16 @@ var res4 = names.sorted() {$0 < $1}     // swift支持尾随表达式，即闭�
 print(res4) // ["lee", "wang", "zhang", "zhao"]
 var res5 = names.sorted {$0 < $1}   // 如果调用者只需要一个闭包表达式作为参数，小括号也可以省略
 print(res5) // ["lee", "wang", "zhang", "zhao"]
+
+func outFunc(inFunc amount: Int) -> () -> Int {
+    var total = 0;
+    func inFunc() -> Int {
+        total += amount;
+        return total;
+    }
+    return inFunc;
+}
+let r = outFunc(inFunc: 5)
+print(r())  // 输出5
+print(r())  // 输出10
+print(r())  // 输出15
