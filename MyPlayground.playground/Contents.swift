@@ -184,3 +184,92 @@ let r = outFunc(inFunc: 5)
 print(r())  // 输出5
 print(r())  // 输出10
 print(r())  // 输出15
+
+enum Week {
+    case MONDAY
+    case TUESDAY
+    case WEDNESDAY
+    case THURSDAY
+    case FRIDAY
+    case SATURDAY
+    case SUNDAY
+}
+
+var day = Week.THURSDAY
+//print(day)
+func checkWeek(week: Week) {
+    switch week {
+        case .MONDAY:
+            print("周一")
+        case .TUESDAY:
+            print("周二")
+        case .WEDNESDAY:
+            print("周三")
+        case .THURSDAY:
+            print("周四")
+        case .FRIDAY:
+            print("周五")
+        case .SATURDAY:
+            print("周六")
+        case .SUNDAY:
+            print("周日")
+        
+    }
+}
+
+checkWeek(week: day)
+
+
+enum Student {
+    case BaseInfo(name: String, grade: Int)
+    case ExamScore(chinese: Int, math: Int, english: Int)
+}
+
+var studentInfo = Student.BaseInfo(name: "张三", grade: 23)
+var studentScore = Student.ExamScore(chinese: 90, math: 95, english: 85)
+switch studentScore {
+case .BaseInfo(let name, let grade):
+    print("姓名:\(name)，年级：\(grade)")
+case .ExamScore(let chinese, let math, let english):
+    print("语文成绩：\(chinese)，数学成绩：\(math)，英语成绩：\(english)")
+}
+
+enum Month: Int {   // Int用来声明原始值的类型
+    case January
+    case February
+}
+print("原始值：\(Month.January.rawValue)")
+
+struct Score {
+//    var chinese: Int
+//    var math: Int
+//    var english: Int
+    
+    // 定义的时候就初始化，默认会多一个无参的init方法
+    var chinese = 100
+    var math = 90
+    var english = 80
+    
+//    init(chinese: Int) {    // 如果手动定义int方法，默认的全参init方法就不存在了
+//        self.chinese = chinese
+//    }
+}
+
+let score = Score(chinese: 90, math: 80, english: 70)   // 结构体默认会有一个全参数的init方法
+let score1 = Score()    // 这种创建实例的方式只有结构体定义的时候参数就被初始化才能使用
+print(score1.chinese)
+
+class student {
+    var name: String
+    var age: Int
+    var score: Double
+    
+    init(name: String, age: Int, score: Double) {
+        self.name = name
+        self.age = age
+        self.score = score
+    }
+}
+let stu = student(name: "张三", age: 23, score: 45.5)
+print(stu.name)     // 输出 张三
+
