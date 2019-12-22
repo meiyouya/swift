@@ -273,3 +273,67 @@ class student {
 let stu = student(name: "张三", age: 23, score: 45.5)
 print(stu.name)     // 输出 张三
 
+struct Number {
+    var digits = 222
+    let pi = 3.1415
+}
+var num = Number(digits: 123)
+num.digits = 234
+// 常量不可改变，修改会报错
+//num.pi = 3.14
+print(num.digits)
+print(num.pi)
+
+class lazySample {
+    lazy var n = Number()
+}
+var ls = lazySample()
+print(ls.n.digits)
+
+class calcProp {
+    var num1=1.0,num2=2.0
+    
+    var avg: Double {
+        get {
+            return (num1 + num2) / 2
+        }
+        set(n) {
+            // 用来主动对属性设置值，一般来说很少用，因为计算属性很少需要主动设置值
+            // 没有set的计算属性叫做只读计算属性
+        }
+    }
+}
+
+var calc = calcProp()
+print(calc.avg)
+calc.avg = 2.0  // 设置avg的值
+
+class Counter {
+    var count: Int = 0 {
+        willSet(newValue) {
+            print("\(count)---\(newValue)")
+        }
+        didSet {
+            // didSet会自动传进一个名字为oldValue的变量，直接取就可以获取旧的值
+            print("\(count)---\(oldValue)")
+        }
+        
+    }
+}
+let counter = Counter()
+counter.count = 100
+
+
+struct StructA {
+    static var a = 10
+}
+print(StructA.a)
+
+class ClassA {
+    static var b = 11
+    class var count: Int {
+        return b;
+    }
+}
+print(ClassA.b)
+print(ClassA.count)
