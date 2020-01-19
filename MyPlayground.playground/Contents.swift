@@ -337,3 +337,35 @@ class ClassA {
 }
 print(ClassA.b)
 print(ClassA.count)
+
+class Dog {
+    var isHungry: Bool = true;
+    
+    func run() {
+        print("狗在走路，走完路就饿了");
+        isHungry = true;
+    }
+    func eat(food: String) {
+        print("狗在吃\(food)");
+        isHungry = false;
+    }
+    func hungry() -> Bool {
+        return isHungry;
+    }
+}
+
+let dog = Dog();
+print(dog.hungry()); // 狗是否饿
+dog.eat(food: "包子");    // 狗吃了包子
+print(dog.hungry()); // 狗是否饿
+dog.run();  // 狗走路
+print(dog.hungry()); // 狗是否饿
+
+struct Area {
+    var width: Int;
+    var height: Int;
+    
+    func area() -> Int {
+        return width * height;
+    }
+}
